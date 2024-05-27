@@ -3,6 +3,29 @@
 window.addEventListener("load", initApp); // When the page is loaded, run initApp function
 
 // Function to initialize the Web App
-function initApp() {
+async function initApp() {
   console.log("initApp: app.js is running 🎉"); // Log to the console that the app is running
+  const teachers = await getTeachers();
+  console.log(teachers);
+  displayTeachers(teachers);
+}
+
+async function getTeachers() {
+  const response = await fetch(
+    "https://raw.githubusercontent.com/cederdorff/race/master/data/users.json"
+  );
+  const data = await response.json();
+  return data;
+}
+
+function displayTeachers(teachers) {
+  console.log(teachers);
+
+  const teachersList = document.querySelector("#teachers-list");
+
+  teachersList.insertAdjacentHTML("beforeend", "<h1>hiiii </h1>");
+
+  for (const teacher of teachers) {
+    teachersList.innerAdjacentHTML("beforeend", "<li>${teacher.name}</li>");
+  }
 }
