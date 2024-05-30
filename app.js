@@ -23,9 +23,18 @@ function displayTeachers(teachers) {
 
   const teachersList = document.querySelector("#teachers-list");
 
-  teachersList.insertAdjacentHTML("beforeend", "<h1>hiiii </h1>");
+for (const teacher of teachers) {
+  teachersList.insertAdjacentHTML(
+  "beforeend",
+`
+  <li>
+    ${teacher.name}
+  </li>
+`
+  )
+}
 
-  for (const teacher of teachers) {
-    teachersList.innerAdjacentHTML("beforeend", "<li>${teacher.name}</li>");
-  }
+function displayTeachersGrid(teachers) {
+
+}
 }
